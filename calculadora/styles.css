@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.calculadora {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 360px;
+}
+
+.pantalla {
+  background: #333;
+  color: white;
+  font-size: 2rem;
+  padding: 20px;
+  text-align: right;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  min-height: 60px;
+  word-wrap: break-word;
+  font-family: "SF Mono", "Consolas", monospace;
+  font-weight: 700;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.botones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 20px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: #f0f0f0;
+  color: #333;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+button:hover {
+  background: #e0e0e0;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button[onclick="limpiar()"] {
+  background: #ff6b6b;
+  color: white;
+}
+
+button[onclick="limpiar()"]:hover {
+  background: #ee5a5a;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+button[onclick^="operacion"] {
+  background: #764ba2;
+  color: white;
+}
+
+button[onclick^="operacion"]:hover {
+  background: #6a3f96;
+  box-shadow: 0 4px 12px rgba(118, 75, 162, 0.4);
+}
+
+button[onclick="calcular()"] {
+  background: #27ae60;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+button[onclick="calcular()"]:hover {
+  background: #229954;
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
+}
+
+@media (max-width: 400px) {
+  body { padding: 10px; }
+  .calculadora { padding: 14px; border-radius: 16px; }
+  .pantalla { font-size: 1.5rem; padding: 14px; min-height: 50px; }
+  button { padding: 14px; font-size: 1.2rem; }
+  button[onclick="calcular()"] { font-size: 1.5rem; }
+}
