@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora — Jobie TECH</title>
+  <title>Calculadora — Jobie TECH v2.0</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,26 +13,33 @@
 
     <div class="botones">
       <button onclick="limpiar()">C</button>
+      <button onclick="borrar()">⌫</button>
+      <button onclick="operacion('*')">×</button>
+      <button onclick="operacion('/')">÷</button>
+
       <button onclick="agregarNumero('7')">7</button>
       <button onclick="agregarNumero('8')">8</button>
       <button onclick="agregarNumero('9')">9</button>
-      <button onclick="operacion('+')">+</button>
+      <button onclick="operacion('-')">-</button>
 
       <button onclick="agregarNumero('4')">4</button>
       <button onclick="agregarNumero('5')">5</button>
       <button onclick="agregarNumero('6')">6</button>
-      <button onclick="operacion('-')">-</button>
+      <button onclick="operacion('+')">+</button>
 
       <button onclick="agregarNumero('1')">1</button>
       <button onclick="agregarNumero('2')">2</button>
       <button onclick="agregarNumero('3')">3</button>
-      <button onclick="operacion('*')">×</button>
+      <button onclick="calcular()" class="btn-igual">=</button>
 
-      <button onclick="agregarNumero('0')">0</button>
+      <button onclick="agregarNumero('0')" class="btn-cero">0</button>
       <button onclick="agregarNumero('.')">.</button>
-      <button onclick="calcular()">=</button>
-      <button onclick="operacion('/')">÷</button>
     </div>
+  </div>
+
+  <div class="historial-contenedor">
+    <h3>Historial</h3>
+    <ul id="lista-historial"></ul>
   </div>
 
   <script src="script.js"></script>
