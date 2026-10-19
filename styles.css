@@ -7,11 +7,12 @@
 body {
   font-family: Arial, sans-serif;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 20px;
+  gap: 20px;
 }
 
 .calculadora {
@@ -35,10 +36,6 @@ body {
   word-wrap: break-word;
   font-family: "SF Mono", "Consolas", monospace;
   font-weight: 700;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
 }
 
 .botones {
@@ -58,55 +55,52 @@ button {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  user-select: none;
 }
 
-button:hover {
-  background: #e0e0e0;
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+button:hover { background: #e0e0e0; }
+button:active { transform: scale(0.95); }
+
+button[onclick="limpiar()"] { background: #ff6b6b; color: white; }
+button[onclick="borrar()"] { background: #ffb347; color: white; }
+button[onclick^="operacion"] { background: #764ba2; color: white; }
+button[onclick="calcular()"] { background: #27ae60; color: white; font-size: 1.8rem; grid-row: span 2; }
+
+.btn-cero { grid-column: span 2; }
+
+/* Estilos del historial */
+.historial-contenedor {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 15px 20px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-button:active {
-  transform: scale(0.95);
+.historial-contenedor h3 {
+  font-size: 1rem;
+  color: #764ba2;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
 }
 
-button[onclick="limpiar()"] {
-  background: #ff6b6b;
-  color: white;
+#lista-historial {
+  list-style: none;
+  max-height: 120px;
+  overflow-y: auto;
+  font-family: "SF Mono", monospace;
+  font-size: 0.9rem;
+  color: #555;
 }
 
-button[onclick="limpiar()"]:hover {
-  background: #ee5a5a;
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+#lista-historial li {
+  padding: 5px 0;
+  border-bottom: 1px dashed #eee;
 }
 
-button[onclick^="operacion"] {
-  background: #764ba2;
-  color: white;
-}
-
-button[onclick^="operacion"]:hover {
-  background: #6a3f96;
-  box-shadow: 0 4px 12px rgba(118, 75, 162, 0.4);
-}
-
-button[onclick="calcular()"] {
-  background: #27ae60;
-  color: white;
-  font-size: 1.8rem;
-  font-weight: 700;
-}
-
-button[onclick="calcular()"]:hover {
-  background: #229954;
-  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
-}
-
-@media (max-width: 400px) {
-  body { padding: 10px; }
-  .calculadora { padding: 14px; border-radius: 16px; }
-  .pantalla { font-size: 1.5rem; padding: 14px; min-height: 50px; }
-  button { padding: 14px; font-size: 1.2rem; }
-  button[onclick="calcular()"] { font-size: 1.5rem; }
+#lista-historial li:last-child {
+  border-bottom: none;
+  font-weight: bold;
+  color: #27ae60;
 }
